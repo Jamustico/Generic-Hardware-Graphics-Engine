@@ -1,0 +1,74 @@
+$date
+	Wed Sep 09 20:39:00 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module vram_tb $end
+$var wire 9 ! data_r [8:0] $end
+$var reg 16 " Address_bus [15:0] $end
+$var reg 1 # cs $end
+$var reg 9 $ data_w [8:0] $end
+$var reg 1 % oe $end
+$var reg 1 & rw $end
+$scope module uut $end
+$var wire 16 ' Address_bus [15:0] $end
+$var wire 9 ( Data_bus [8:0] $end
+$var wire 9 ) Data_i [8:0] $end
+$var wire 1 # cs $end
+$var wire 1 % oe $end
+$var wire 1 & rw $end
+$var reg 16 * Address [15:0] $end
+$var reg 9 + Data_o [8:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx +
+b1010 *
+bz )
+bx (
+b1010 '
+0&
+0%
+b111000000 $
+0#
+b1010 "
+bx !
+$end
+#10
+b1011 *
+b111 $
+b1011 "
+b1011 '
+0%
+0#
+#20
+b1100 *
+b111000 $
+b1100 "
+b1100 '
+0%
+0#
+#30
+0&
+0%
+0#
+#40
+b1010 *
+b1010 "
+b1010 '
+0&
+0%
+0#
+#50
+b1011 *
+b1011 "
+b1011 '
+0&
+0%
+0#

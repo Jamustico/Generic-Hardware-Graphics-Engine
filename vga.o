@@ -1,0 +1,235 @@
+#! /usr/local/iverilog/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-612-ga9388a89)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "vhdl_textio";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000000000086c970 .scope module, "vga" "vga" 2 14;
+ .timescale 0 0;
+v00000000008c8e00_0 .net "display", 0 0, L_000000000085d910;  1 drivers
+v00000000008c8860_0 .net "iX", 8 0, v000000000085a1a0_0;  1 drivers
+v00000000008c78c0_0 .net "iY", 10 0, v000000000085a7e0_0;  1 drivers
+v00000000008c7dc0_0 .net "pointer", 0 0, L_00000000008c8680;  1 drivers
+v00000000008c8f40_0 .var "tb_clk", 0 0;
+L_00000000008c85e0 .part v000000000085a7e0_0, 0, 9;
+L_00000000008c8680 .part L_00000000008c7500, 0, 1;
+S_000000000086cb00 .scope module, "address_calc" "vga_add" 2 43, 3 39 0, S_000000000086c970;
+ .timescale 0 0;
+    .port_info 0 /INPUT 9 "posx";
+    .port_info 1 /INPUT 9 "posy";
+    .port_info 2 /OUTPUT 16 "eff";
+P_000000000085e530 .param/l "width" 0 3 45, +C4<00000000000000000000000011001000>;
+v000000000085a560_0 .net *"_s0", 31 0, L_00000000008c7320;  1 drivers
+L_00000000008c90f8 .functor BUFT 1, C4<00000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0000000000859980_0 .net *"_s11", 22 0, L_00000000008c90f8;  1 drivers
+v00000000008598e0_0 .net *"_s12", 31 0, L_00000000008c8540;  1 drivers
+L_00000000008c9068 .functor BUFT 1, C4<00000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0000000000859d40_0 .net *"_s3", 22 0, L_00000000008c9068;  1 drivers
+L_00000000008c90b0 .functor BUFT 1, C4<00000000000000000000000011001000>, C4<0>, C4<0>, C4<0>;
+v000000000085a2e0_0 .net/2u *"_s4", 31 0, L_00000000008c90b0;  1 drivers
+v000000000085a060_0 .net *"_s7", 31 0, L_00000000008c7e60;  1 drivers
+v000000000085a600_0 .net *"_s8", 31 0, L_00000000008c8ea0;  1 drivers
+v0000000000859b60_0 .net "eff", 15 0, L_00000000008c7500;  1 drivers
+v0000000000859c00_0 .net "posx", 8 0, v000000000085a1a0_0;  alias, 1 drivers
+v000000000085a740_0 .net "posy", 8 0, L_00000000008c85e0;  1 drivers
+L_00000000008c7320 .concat [ 9 23 0 0], L_00000000008c85e0, L_00000000008c9068;
+L_00000000008c7e60 .arith/mult 32, L_00000000008c7320, L_00000000008c90b0;
+L_00000000008c8ea0 .concat [ 9 23 0 0], v000000000085a1a0_0, L_00000000008c90f8;
+L_00000000008c8540 .arith/sum 32, L_00000000008c7e60, L_00000000008c8ea0;
+L_00000000008c7500 .part L_00000000008c8540, 0, 16;
+S_0000000000871f50 .scope module, "counter" "vga_counter" 2 36, 4 52 0, S_000000000086c970;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /OUTPUT 1 "hsync";
+    .port_info 2 /OUTPUT 1 "vsync";
+    .port_info 3 /OUTPUT 9 "hcounter";
+    .port_info 4 /OUTPUT 11 "vcounter";
+    .port_info 5 /OUTPUT 1 "display";
+P_00000000008720e0 .param/l "hbporch" 0 4 65, +C4<00000000000000000000000011110010>;
+P_0000000000872118 .param/l "hfinish" 0 4 66, +C4<00000000000000000000000100001000>;
+P_0000000000872150 .param/l "hfporch" 0 4 63, +C4<00000000000000000000000011001000>;
+P_0000000000872188 .param/l "hstart" 0 4 62, +C4<00000000000000000000000000000000>;
+P_00000000008721c0 .param/l "hsyncpulse" 0 4 64, +C4<00000000000000000000000011010010>;
+P_00000000008721f8 .param/l "vbporch" 0 4 72, +C4<00000000000000000000001001011100>;
+P_0000000000872230 .param/l "vfinish" 0 4 73, +C4<00000000000000000000001001110100>;
+P_0000000000872268 .param/l "vfporch" 0 4 70, +C4<00000000000000000000001001011000>;
+P_00000000008722a0 .param/l "vstart" 0 4 69, +C4<00000000000000000000000000000000>;
+P_00000000008722d8 .param/l "vsyncpulse" 0 4 71, +C4<00000000000000000000001001011001>;
+L_000000000085d910 .functor AND 1, v0000000000859e80_0, v00000000008c75a0_0, C4<1>, C4<1>;
+v0000000000859de0_0 .net "clk", 0 0, v00000000008c8f40_0;  1 drivers
+v0000000000859f20_0 .net "display", 0 0, L_000000000085d910;  alias, 1 drivers
+v000000000085a1a0_0 .var "hcounter", 8 0;
+v0000000000859e80_0 .var "hdisplay", 0 0;
+v000000000085a240_0 .var "hsync", 0 0;
+v000000000085a7e0_0 .var "vcounter", 10 0;
+v00000000008c75a0_0 .var "vdisplay", 0 0;
+v00000000008c8360_0 .var "vsync", 0 0;
+E_000000000085f3b0 .event posedge, v0000000000859de0_0;
+S_0000000000863d60 .scope module, "videoram" "vram" 2 49, 5 20 0, S_000000000086c970;
+ .timescale 0 0;
+    .port_info 0 /INPUT 16 "Address_bus";
+    .port_info 1 /INOUT 9 "Data_bus";
+    .port_info 2 /INPUT 1 "cs";
+    .port_info 3 /INPUT 1 "oe";
+    .port_info 4 /INPUT 1 "rw";
+P_000000000085f130 .param/l "address_size" 0 5 41, +C4<00000000000000000111010100110000>;
+o0000000000873518 .functor BUFZ 9, C4<zzzzzzzzz>; HiZ drive
+L_000000000085d670 .functor BUFZ 9, o0000000000873518, C4<000000000>, C4<000000000>, C4<000000000>;
+v00000000008c7f00_0 .var "Address", 15 0;
+o00000000008734b8 .functor BUFZ 16, C4<zzzzzzzzzzzzzzzz>; HiZ drive
+v00000000008c7460_0 .net "Address_bus", 15 0, o00000000008734b8;  0 drivers
+RS_00000000008734e8 .resolv tri, v00000000008c84a0_0, L_000000000085d670;
+v00000000008c8220_0 .net8 "Data_bus", 8 0, RS_00000000008734e8;  2 drivers
+v00000000008c8400_0 .net "Data_i", 8 0, o0000000000873518;  0 drivers
+v00000000008c84a0_0 .var "Data_o", 8 0;
+v00000000008c70a0 .array "Mem", 0 29999, 8 0;
+o0000000000873578 .functor BUFZ 1, C4<z>; HiZ drive
+v00000000008c80e0_0 .net "cs", 0 0, o0000000000873578;  0 drivers
+o00000000008735a8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000000008c82c0_0 .net "oe", 0 0, o00000000008735a8;  0 drivers
+o00000000008735d8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000000008c7a00_0 .net "rw", 0 0, o00000000008735d8;  0 drivers
+E_000000000085e670 .event posedge, v00000000008c80e0_0;
+    .scope S_0000000000871f50;
+T_0 ;
+    %pushi/vec4 0, 0, 9;
+    %assign/vec4 v000000000085a1a0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000859e80_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000000000085a240_0, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000000000871f50;
+T_1 ;
+    %pushi/vec4 0, 0, 11;
+    %assign/vec4 v000000000085a7e0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v00000000008c75a0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v00000000008c8360_0, 0;
+    %end;
+    .thread T_1;
+    .scope S_0000000000871f50;
+T_2 ;
+    %wait E_000000000085f3b0;
+    %load/vec4 v000000000085a1a0_0;
+    %addi 1, 0, 9;
+    %assign/vec4 v000000000085a1a0_0, 0;
+    %load/vec4 v000000000085a1a0_0;
+    %pad/u 32;
+    %cmpi/e 264, 0, 32;
+    %jmp/0xz  T_2.0, 4;
+    %pushi/vec4 0, 0, 9;
+    %assign/vec4 v000000000085a1a0_0, 0;
+    %load/vec4 v000000000085a7e0_0;
+    %addi 1, 0, 11;
+    %assign/vec4 v000000000085a7e0_0, 0;
+    %load/vec4 v000000000085a7e0_0;
+    %pad/u 32;
+    %cmpi/e 628, 0, 32;
+    %jmp/0xz  T_2.2, 4;
+    %pushi/vec4 0, 0, 11;
+    %assign/vec4 v000000000085a7e0_0, 0;
+T_2.2 ;
+    %load/vec4 v000000000085a7e0_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_2.4, 4;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v00000000008c75a0_0, 0;
+T_2.4 ;
+    %load/vec4 v000000000085a7e0_0;
+    %pad/u 32;
+    %cmpi/e 600, 0, 32;
+    %jmp/0xz  T_2.6, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v00000000008c75a0_0, 0;
+T_2.6 ;
+    %load/vec4 v000000000085a7e0_0;
+    %pad/u 32;
+    %cmpi/e 601, 0, 32;
+    %jmp/0xz  T_2.8, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v00000000008c8360_0, 0;
+T_2.8 ;
+    %load/vec4 v000000000085a7e0_0;
+    %pad/u 32;
+    %cmpi/e 604, 0, 32;
+    %jmp/0xz  T_2.10, 4;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v00000000008c8360_0, 0;
+T_2.10 ;
+T_2.0 ;
+    %load/vec4 v000000000085a1a0_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_2.12, 4;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0000000000859e80_0, 0;
+T_2.12 ;
+    %load/vec4 v000000000085a1a0_0;
+    %pad/u 32;
+    %cmpi/e 200, 0, 32;
+    %jmp/0xz  T_2.14, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0000000000859e80_0, 0;
+T_2.14 ;
+    %load/vec4 v000000000085a1a0_0;
+    %pad/u 32;
+    %cmpi/e 210, 0, 32;
+    %jmp/0xz  T_2.16, 4;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000000000085a240_0, 0;
+T_2.16 ;
+    %load/vec4 v000000000085a1a0_0;
+    %pad/u 32;
+    %cmpi/e 242, 0, 32;
+    %jmp/0xz  T_2.18, 4;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000000000085a240_0, 0;
+T_2.18 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0000000000863d60;
+T_3 ;
+    %wait E_000000000085e670;
+    %load/vec4 v00000000008c7460_0;
+    %store/vec4 v00000000008c7f00_0, 0, 16;
+    %load/vec4 v00000000008c82c0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.0, 8;
+    %load/vec4 v00000000008c7a00_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.2, 8;
+    %ix/getv 4, v00000000008c7f00_0;
+    %load/vec4a v00000000008c70a0, 4;
+    %store/vec4 v00000000008c84a0_0, 0, 9;
+    %jmp T_3.3;
+T_3.2 ;
+    %load/vec4 v00000000008c8400_0;
+    %ix/getv 4, v00000000008c7f00_0;
+    %store/vec4a v00000000008c70a0, 4, 0;
+T_3.3 ;
+    %jmp T_3.1;
+T_3.0 ;
+    %load/vec4 v00000000008c7a00_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_3.4, 8;
+    %pushi/vec4 0, 511, 9;
+    %store/vec4 v00000000008c84a0_0, 0, 9;
+T_3.4 ;
+T_3.1 ;
+    %jmp T_3;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "vga_tb.v";
+    "./vga_add.v";
+    "./vga_counter.v";
+    "./vga_vram.v";

@@ -1,0 +1,111 @@
+
+* Vga controlling. Module Description *
+
+    ---------------------------------------------------
+    * Pixel Counting (racing the beam) [VGA Counter]:
+    
+        e.g -res: 
+                800x600 
+
+            refresh rate:
+                60hz
+        
+            clock(typ):
+                40mhz
+
+            clock(used):
+                10mhz
+
+        in order to use a clock signal with a 1/4 of the recomended frequency,there should be
+        a redudancy of clk(typ)/clk(used).
+
+        In this case,we should half the pixel number to a 1/4 of the original,in order
+        to each pixel be shown in the same time.
+
+        the new true resolution will be 200x150
+
+        so where the scanlines use to be:
+
+        ----------------------------------
+        -   Nominal Timmings (f = 40Mhz) -
+        -                                -
+        -   -------------                -
+        -   Horizontal:                  -
+        -   -Total:     1056             -
+        -                                -
+        -   -Visible:   800              -
+        -   -F.Porch:   40               -
+        -   -SyncPuls:  128              -
+        -   -B.Porch:   88               -
+        ----------------------------------
+
+        they will now become:
+
+        -------------------------------------------
+        -   New Timming (f' = 10MHz; f'= f * 1/4) -
+        -                                         -
+        -   -------------                         -
+        -   Horizontal:                           -
+        -   -Total:     264                       -
+        -                                         -
+        -   -Visible:   200 (800/4)               -
+        -   -F.Porch:   10  (40/4)                -
+        -   -SyncPuls:  32  (128/4)               -
+        -   -B.Porch:   22  (88/4)                -
+        -------------------------------------------
+
+
+        a hsync and vsync signal will be output from the Vga Counter module in order to
+        control the monitor resolution to 800x600
+
+        each pixel has it's own address,so in order to account for the address,
+        it will be output the horizontal and vertical numbers counter (hcounter,vcounter respectively)
+        for address calculation purposes
+
+    ---------------------------------------------------
+    * Pixel Memory [Address Calculator,RAM]:
+
+        Each pixel value (3 bit red,3 bit green,3 bit blue) will be stored in a single location
+        on vram.
+
+        Vram will be instantly accessed by a 3 Bit Binary DAC
+
+        The resulting vram: -30k address space (200x150)
+                            -9 bit data wide (3bit per color channel)
+        
+        To calculate the adddress for the given hcounter vcounter pair:
+
+        eg. 
+            hcounter = 0 (top)
+            vcounter = 0 (leftmost)
+
+            (y * line_width) + x
+
+        then:
+
+            (0 * 200) + 0 = 0
+            
+            Address = 0
+
+        eg.2
+            hcounter = 199 (bottom)
+            vcounter = 149 (rightmost)
+
+            (149 * 200) + 199 = 29,999
+
+            Address = 29,999
+
+        
+        where y is the value of hcounter, x value of vcounter, line_width is the width of the resolution
+        (line_width x line_height)
+
+        The calculated address points the vram address to the DAC,in order for tha pixel to be output
+        at the requested (by the clk signal) to the screen.
+
+    ---------------------------------------------------
+    * Object Generation
+
+
+
+
+
