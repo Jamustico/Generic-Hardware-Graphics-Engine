@@ -6,4 +6,10 @@ Verilog implementation of Adam Shapiro and Tom Chatt's [Generic Hardware Graphic
 
 ## Objective
 
+
 Design the GHGE Architecture using hdl implement it on a Arty-7 Board, running the classic game of [**PONG**](https://en.wikipedia.org/wiki/Pong)
+
+
+## Architecture
+
+\(TODO\)
