@@ -1,0 +1,20 @@
+Generic HArdware Graphics Engine:
+    
+        GPU:    
+            - Clock Generation          (src_clk)
+            - DMA Instruction FIFO      (dma_instruction)
+            - Instruction Controller    (instruction_ctlr)
+            - Foreground Controller     (foreground_ctlr)
+            - Display Controller        (display_ctlr)
+
+            - Image decoder (ppm)       (img_dcdr)
+            - Function: Draw String     (f_drw_str)
+            - Function: Image           (f_img)
+            - Function: Load Font       (f_ldfont)
+            - Function: Draw Rectangle  (f_drwrect)
+            - Function: Draw Line       (f_drwline)
+
+        External
+
+            - CPU
+            - SRAM
